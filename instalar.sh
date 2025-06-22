@@ -1,3 +1,4 @@
 #! /run/current-system/sw/bin/bash
 
-sudo nixos-rebuild switch -I nixos-config="$(pwd)/angelo.nix"
+nix-channel --update
+nixos-rebuild switch -I nixos-config="$(pwd)/angelo.nix"
