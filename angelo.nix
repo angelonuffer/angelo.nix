@@ -1,14 +1,18 @@
-{ config, pkgs, ... }:
+let
+  pkgs = import <nixpkgs> {
+    config.allowUnfree = true;
+  };
+in
+  {
+    home.username = "angelo";
+    home.homeDirectory = "/home/angelo";
+    home.stateVersion = "24.05";
 
-{
-  imports = [
-    /etc/nixos/configuration.nix
-  ];
-
-  environment.systemPackages = with pkgs; [
-    vscode
-    git
-    nodejs_23
-    google-chrome
-  ];
-}
+    home.packages = with pkgs; [
+      home-manager
+      vscode
+      google-chrome
+      git
+      nodejs_23
+    ];
+  }
